@@ -69,11 +69,15 @@ export function runHeroEntrance() {
     'titleArrival'
   );
 
-  // Letter spacing settles subtly from wider spacing to normal
+  // Letter spacing settles subtly from wider spacing to normal (calibrated for mobile vs desktop)
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const targetLetterSpacing = isMobile ? '0.015em' : '0.04em';
+  const startLetterSpacing = isMobile ? '0.035em' : '0.08em';
+
   tl.fromTo('.hero-title',
-    { letterSpacing: '0.08em' },
+    { letterSpacing: startLetterSpacing },
     {
-      letterSpacing: '0.04em',
+      letterSpacing: targetLetterSpacing,
       duration: 1.3,
       ease: 'cubic-bezier(0.16, 1, 0.3, 1)',
     },
@@ -178,11 +182,14 @@ export function initHeroScrollDrift() {
     },
   });
 
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const driftScale = isMobile ? 0.35 : 1.0;
+
   chars.forEach((char, index) => {
     const offset = driftOffsets[index] || { x: 0, y: 0 };
     driftTL.to(char, {
-      x: offset.x,
-      y: offset.y,
+      x: offset.x * driftScale,
+      y: offset.y * driftScale,
       opacity: 0.25,
       scale: 0.985,
       ease: 'none',
