@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DUVANSI — Visual Designer & Creative Technologist, Born 2006</title>
+  <meta name="description" content="Portfolio of duvansi. Visual designer from Da Nang, born 2006. Specializing in brand identity, kinetic digital experiences, and editorial typography." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23f5f2eb'>D</text></svg>" />
+  <meta name="theme-color" content="#050507" />
+  <!-- Font performance: preconnect eliminates DNS + TLS overhead -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Non-blocking font load: avoids render-blocking stylesheet -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" /></noscript>
+</head>
+<body>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Magnetic Cursor -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-follower" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="nav-header" role="banner">
+    <a href="/" class="brand-logo" data-magnetic aria-label="DUVANSI Home">DUVANSI</a>
+
+    <nav class="nav-meta" aria-label="Status Bar">
+      <span><span class="live-indicator" aria-hidden="true"></span><span id="live-clock">DA NANG GMT+7</span></span>
+      <span data-scramble>[ AVAILABLE FOR COMMISSIONS ]</span>
+      <span>EST. 2006</span>
+    </nav>
+
+    <a href="/duan/" class="nav-cta" data-magnetic data-cursor="VIEW">
+      <span>ARCHIVE</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </header>
+
+  <main id="main-content">
+    <!-- 01. HERO SECTION -->
+    <section class="hero-section container-lux" aria-labelledby="hero-title">
+      <div class="hero-bg-ghost" aria-hidden="true">DUVANSI</div>
+
+      <div class="hero-meta-bar">
+        <span data-scramble>01 // INDEPENDENT DESIGN PRACTICE</span>
+        <span>DA NANG, VN — 16.0544° N, 108.2022° E</span>
+      </div>
+
+      <div class="hero-title-wrap">
+        <!-- Two atmospheric ghost text layers behind main title -->
+        <div class="hero-ghost-layer hero-ghost-1" aria-hidden="true">DUVANSI</div>
+        <div class="hero-ghost-layer hero-ghost-2" aria-hidden="true">DUVANSI</div>
+
+        <span class="hero-eyebrow" data-scramble>[ HELLO, I'M THÁI / DESIGNER / CREATIVE CODER ]</span>
+
+        <h1 class="hero-title" id="hero-title" aria-label="DUVANSI">
+          <span class="char-mask"><span class="kinetic-char">D</span></span><span class="char-mask"><span class="kinetic-char">U</span></span><span class="char-mask"><span class="kinetic-char">V</span></span><span class="char-mask"><span class="kinetic-char">A</span></span><span class="char-mask"><span class="kinetic-char">N</span></span><span class="char-mask"><span class="kinetic-char">S</span></span><span class="char-mask"><span class="kinetic-char">I</span></span>
+        </h1>
+      </div>
+
+      <!-- Hero Middle / Content Grid: Intro text on left, Editorial portrait on right -->
+      <div class="hero-content-grid">
+        <div class="hero-intro-col">
+          <div class="hero-subtitle font-editorial" aria-label="Visual Designer & Creative Technologist — turning raw ideas into brands, interfaces, and digital experiences that feel sharp, human, and hard to ignore.">
+            <span class="intro-line-mask"><span class="intro-line">Visual Designer &amp; Creative Technologist —</span></span>
+            <span class="intro-line-mask"><span class="intro-line">turning raw ideas into brands, interfaces,</span></span>
+            <span class="intro-line-mask"><span class="intro-line">and digital experiences that feel sharp, human,</span></span>
+            <span class="intro-line-mask"><span class="intro-line">and hard to ignore.</span></span>
+          </div>
+
+          <div class="hero-desc">
+            <p>
+              From Da Nang, I blend visual thinking, motion, and code to craft identities and web experiences that don’t just look good — they stay with people.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-portrait-col">
+          <div class="hero-portrait-card" data-cursor="DRAG">
+            <div class="portrait-card-inner">
+              <div class="portrait-meta-top font-code">
+                <span class="portrait-tag">[ FIG. 01 — DUVANSI ]</span>
+                <span class="portrait-coord">16.05°N</span>
+              </div>
+              <div class="portrait-img-mask">
+                <img
+                  src="/anh/toi.png"
+                  alt="DUVANSI — Visual Designer & Creative Technologist"
+                  class="hero-portrait-img"
+                  width="600"
+                  height="750"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="portrait-tint-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="portrait-meta-bottom font-code">
+                <span>PORTFOLIO EDITORIAL</span>
+                <span>EST. 2006</span>
+              </div>
+            </div>
+            <span class="portrait-corner top-left" aria-hidden="true"></span>
+            <span class="portrait-corner top-right" aria-hidden="true"></span>
+            <span class="portrait-corner bottom-left" aria-hidden="true"></span>
+            <span class="portrait-corner bottom-right" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-bottom-bar">
+        <div class="hero-disciplines-tag">
+          <span data-scramble>[ BRAND IDENTITY / DIGITAL EXPERIENCES / MOTION CRAFT ]</span>
+        </div>
+
+        <div class="scroll-prompt">
+          <span data-scramble>SCROLL TO EXPLORE</span>
+          <div class="scroll-line" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. MANIFESTO / EDITORIAL COMPOSITION -->
+    <section class="philosophy-section container-lux" id="manifesto-section" aria-labelledby="manifesto-heading">
+      <!-- Subtle architectural background axis line -->
+      <div class="manifesto-axis" aria-hidden="true"></div>
+
+      <div class="section-label">
+        <span data-scramble>02 // PHILOSOPHY &amp; INTENTION</span>
+      </div>
+
+      <div class="manifesto-composition" id="manifesto-heading">
+
+        <!-- SCENE 01: THE AXIOM -->
+        <div class="manifesto-scene scene-01" data-scene="1">
+          <div class="m-phrase m-level-1 text-left">
+            <span>DESIGN IS NOT</span>
+          </div>
+          <div class="m-phrase m-level-2 text-right">
+            <span class="font-editorial">WHAT I ADD.</span>
+          </div>
+        </div>
+
+        <!-- SCENE 02: THE FILTER OF AGENCY -->
+        <div class="manifesto-scene scene-02" data-scene="2">
+          <div class="m-phrase m-level-3 text-left">
+            <span class="m-annotation">[ IT IS WHAT ]</span>
+          </div>
+          <div class="m-phrase m-level-1 text-offset-center">
+            <span>I CHOOSE</span>
+          </div>
+          <div class="m-phrase m-level-2 text-left-indent">
+            <span class="font-editorial">TO LEAVE OUT.</span>
+          </div>
+        </div>
+
+        <!-- SCENE 03: POLARITY & TENSION -->
+        <div class="manifesto-scene scene-03" data-scene="3">
+          <div class="m-phrase m-level-1 text-left">
+            <span>LESS NOISE.</span>
+          </div>
+          <div class="m-phrase m-level-1 text-right m-gold">
+            <span>MORE INTENT.</span>
+          </div>
+        </div>
+
+        <!-- SCENE 04: SCALE CONTRAST -->
+        <div class="manifesto-scene scene-04" data-scene="4">
+          <div class="m-phrase m-level-2 text-left">
+            <span>LESS DECORATION.</span>
+          </div>
+          <div class="m-phrase m-level-1 text-left m-accent-large">
+            <span class="m-gold font-editorial">MORE MEANING.</span>
+          </div>
+        </div>
+
+        <!-- SCENE 05: THE ARCHITECTURAL CADENCE -->
+        <div class="manifesto-scene scene-05" data-scene="5">
+          <div class="m-phrase m-level-2 text-left">
+            <span>I CREATE</span>
+          </div>
+          <div class="m-phrase m-level-2 text-indent-1">
+            <span class="font-editorial">WITH CONTRAST,</span>
+          </div>
+          <div class="m-phrase m-level-1 text-indent-2">
+            <span>RHYTHM,</span>
+          </div>
+          <div class="m-phrase m-level-1 text-right">
+            <span class="font-editorial">SPACE,</span>
+          </div>
+          <div class="m-phrase m-level-2 text-indent-3">
+            <span>AND RESTRAINT.</span>
+          </div>
+        </div>
+
+        <!-- SCENE 06: THE PRELUDE TO STILLNESS -->
+        <div class="manifesto-scene scene-06" data-scene="6">
+          <div class="m-phrase m-level-3 text-left">
+            <span class="m-annotation">[ BECAUSE ]</span>
+          </div>
+          <div class="m-phrase m-level-2 text-left">
+            <span class="font-editorial">WHEN EVERYTHING</span>
+          </div>
+          <div class="m-phrase m-level-1 text-right">
+            <span>IS LOUD,</span>
+          </div>
+        </div>
+
+        <!-- SCENE 07: THE MONUMENTAL CLIMAX -->
+        <div class="manifesto-scene scene-07" data-scene="7">
+          <div class="m-phrase m-monumental-climax">
+            <span class="climax-word">SILENCE</span>
+          </div>
+          <div class="m-phrase m-level-3 text-center-subtle">
+            <span class="font-editorial m-italic-connector">BECOMES</span>
+          </div>
+          <div class="m-phrase m-level-1 text-climax-resolution">
+            <span>THE STRONGEST <span class="m-gold">VOICE.</span></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 03. SELECTED DISCIPLINES -->
+    <section class="showcase-section container-lux" aria-labelledby="work-heading">
+      <div class="showcase-rule" aria-hidden="true"></div>
+
+      <div class="showcase-header">
+        <div class="section-label section-label--flush">
+          <span data-scramble>03 // DISCIPLINES &amp; SELECTED CRAFT</span>
+        </div>
+        <div class="archive-count-label">
+          02 FEATURED / 08 IN ARCHIVE
+        </div>
+      </div>
+
+      <div class="monuments-grid" id="work-heading">
+        <!-- Card 1: Brand Identity -->
+        <article class="typo-card" data-cursor="EXPLORE" tabindex="0" aria-label="Brand Identity discipline">
+          <div class="typo-card-inner">
+            <span class="typo-card-corner corner-tl">01 // CORE DISCIPLINE</span>
+            <span class="typo-card-corner corner-tr">SINCE 2021</span>
+            <span class="typo-card-corner corner-bl">PROJECTS / 12+</span>
+            <span class="typo-card-corner corner-br">ONGOING</span>
+
+            <div class="typo-card-bg-glyph" aria-hidden="true">B</div>
+
+            <div class="typo-card-discipline-num">
+              DISCIPLINE // 01
+            </div>
+
+            <h3 class="typo-card-headline">
+              <span class="typo-headline-line-mask"><span class="typo-headline-line">BRAND</span></span>
+              <span class="typo-headline-line-mask"><span class="typo-headline-line">IDENTITY</span></span>
+            </h3>
+
+            <p class="typo-card-body">
+              Building visual languages from the ground up — logos, colour systems, typographic hierarchies, and guidelines. Identities that feel inevitable, not assembled.
+            </p>
+
+            <div class="typo-card-tags">
+              <span>[ LOGO DESIGN ]</span>
+              <span>[ VISUAL SYSTEMS ]</span>
+              <span>[ BRAND GUIDELINES ]</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Digital Experience -->
+        <article class="typo-card" data-cursor="EXPLORE" tabindex="0" aria-label="Digital Experience discipline">
+          <div class="typo-card-inner">
+            <span class="typo-card-corner corner-tl">02 // DIGITAL CRAFT</span>
+            <span class="typo-card-corner corner-tr">SINCE 2022</span>
+            <span class="typo-card-corner corner-bl">INTERFACES / 8+</span>
+            <span class="typo-card-corner corner-br">ONGOING</span>
+
+            <div class="typo-card-bg-glyph" aria-hidden="true">D</div>
+
+            <div class="typo-card-discipline-num">
+              DISCIPLINE // 02
+            </div>
+
+            <h3 class="typo-card-headline">
+              <span class="typo-headline-line-mask"><span class="typo-headline-line">DIGITAL</span></span>
+              <span class="typo-headline-line-mask"><span class="typo-headline-line">EXPERIENCE</span></span>
+            </h3>
+
+            <p class="typo-card-body">
+              Designing interfaces that feel as good as they look. User flows, interaction design, and cinematic web experiences built for brands that value distinction.
+            </p>
+
+            <div class="typo-card-tags">
+              <span>[ UI / UX DESIGN ]</span>
+              <span>[ WEB EXPERIENCES ]</span>
+              <span>[ KINETIC MOTION ]</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+        <!-- GATEWAY INTERACTIVE KINETIC WHEEL -->
+    <section class="gateway-section" aria-label="Interactive portfolio turntable wheel">
+      <div style="padding: 1.5rem 0; text-align: center; border-bottom: 1px solid var(--border-void); font-family: var(--font-code); font-size: 0.65rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase;">
+        [ &#10022; DRAG WHEEL TO SPIN &bull; CLICK TO OPEN ARCHIVE &rarr; ]
+      </div>
+
+      <a href="/duan/" class="gateway-link" data-cursor="DRAG WHEEL">
+        <div class="marquee-wrapper">
+          <!-- Track 1: Moving Left (Filled Sans) -->
+          <div class="marquee-track marquee-track-left" aria-hidden="true">
+            <div class="marquee-segment">
+              <span class="marquee-display-filled">VIEW SELECTED WORK</span>
+              <span class="marquee-badge">08 PROJECTS</span>
+              <span class="marquee-display-filled">BRAND / WEB / MOTION</span>
+              <span class="marquee-badge">DA NANG, 2026</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-filled">VIEW SELECTED WORK</span>
+              <span class="marquee-badge">08 PROJECTS</span>
+              <span class="marquee-display-filled">BRAND / WEB / MOTION</span>
+              <span class="marquee-badge">DA NANG, 2026</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-filled">VIEW SELECTED WORK</span>
+              <span class="marquee-badge">08 PROJECTS</span>
+              <span class="marquee-display-filled">BRAND / WEB / MOTION</span>
+              <span class="marquee-badge">DA NANG, 2026</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-filled">VIEW SELECTED WORK</span>
+              <span class="marquee-badge">08 PROJECTS</span>
+              <span class="marquee-display-filled">BRAND / WEB / MOTION</span>
+              <span class="marquee-badge">DA NANG, 2026</span>
+            </div>
+          </div>
+
+          <!-- Track 2: Moving Right (Cormorant Italic Outline) -->
+          <div class="marquee-track marquee-track-right" aria-hidden="true">
+            <div class="marquee-segment">
+              <span class="marquee-display-outline">Bold. Intentional. Undeniable.</span>
+              <span class="marquee-badge">duvansi.com/duan</span>
+              <span class="marquee-display-outline">Design that refuses to fit in.</span>
+              <span class="marquee-badge">OPEN ARCHIVE</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-outline">Bold. Intentional. Undeniable.</span>
+              <span class="marquee-badge">duvansi.com/duan</span>
+              <span class="marquee-display-outline">Design that refuses to fit in.</span>
+              <span class="marquee-badge">OPEN ARCHIVE</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-outline">Bold. Intentional. Undeniable.</span>
+              <span class="marquee-badge">duvansi.com/duan</span>
+              <span class="marquee-display-outline">Design that refuses to fit in.</span>
+              <span class="marquee-badge">OPEN ARCHIVE</span>
+            </div>
+            <div class="marquee-segment">
+              <span class="marquee-display-outline">Bold. Intentional. Undeniable.</span>
+              <span class="marquee-badge">duvansi.com/duan</span>
+              <span class="marquee-display-outline">Design that refuses to fit in.</span>
+              <span class="marquee-badge">OPEN ARCHIVE</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- 04. FOOTER / CONTACT -->
+    <footer class="footer-lux container-lux" role="contentinfo">
+      <div class="footer-top">
+        <div>
+          <div class="section-label" style="margin-bottom: 1.75rem;">
+            <span data-scramble>04 // INITIATE DIALOGUE</span>
+          </div>
+          <h2 class="footer-cta-title" data-split>
+            Have a project<br>in mind?
+          </h2>
+          <button class="email-copy-btn" data-cursor="COPY" data-magnetic aria-label="Copy email pdt.146@gmail.com">
+            <span data-scramble>pdt.146@gmail.com</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        <div>
+          <h3 class="footer-col-heading">
+            NAVIGATE
+          </h3>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="/" data-cursor="HOME">Home</a></li>
+            <li class="footer-link-item"><a href="/duan/" data-cursor="WORK">Selected Work</a></li>
+            <li class="footer-link-item"><a href="mailto:pdt.146@gmail.com" data-cursor="EMAIL">Direct Email</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-heading">
+            PRESENCE
+          </h3>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="https://www.facebook.com/dusi146" target="_blank" rel="noopener" data-cursor="FACEBOOK">Facebook / dusi146 ↗</a></li>
+            <li class="footer-link-item"><a href="https://www.instagram.com/_duvansi/" target="_blank" rel="noopener" data-cursor="INSTAGRAM">Instagram / @_duvansi ↗</a></li>
+            <li class="footer-link-item"><a href="mailto:pdt.146@gmail.com" data-cursor="EMAIL">Email / pdt.146@gmail.com ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 DUVANSI — VISUAL DESIGNER, DA NANG.</span>
+        <span data-scramble>BORN 2006. DESIGNING SINCE 2021.</span>
+        <span>ALL RIGHTS RESERVED.</span>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>

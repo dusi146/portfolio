@@ -1,0 +1,63 @@
+﻿/* ─────────────────────────────────────────────
+   CUSTOM CURSOR SYSTEM
+───────────────────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 5px; height: 5px;
+  background: var(--text-white);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+.cursor-follower {
+  position: fixed;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(245, 242, 235, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-code);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-white);
+  mix-blend-mode: difference;
+  transition:
+    width    0.45s var(--ease-museum),
+    height   0.45s var(--ease-museum),
+    background-color 0.3s ease,
+    border-color     0.3s ease,
+    opacity          0.2s ease;
+  will-change: transform, width, height;
+}
+
+.cursor-follower.is-hovering {
+  width: 90px; height: 90px;
+  background: rgba(245, 242, 235, 0.95);
+  color: #040406;
+  border-color: transparent;
+  mix-blend-mode: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.cursor-follower.is-magnetic {
+  width: 52px; height: 52px;
+  border-color: rgba(245, 242, 235, 0.7);
+}
+
+/* Hide on touch devices */
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot, .cursor-follower { display: none !important; }
+  body { cursor: auto !important; }
+}

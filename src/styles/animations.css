@@ -1,0 +1,361 @@
+/* ════════════════════════════════════════════════════
+   KEYFRAMES & CORE MOTION TOKENS
+════════════════════════════════════════════════════ */
+@keyframes line-slide {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50%       { opacity: 1;    transform: scale(1.25); }
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* SplitType Mask Wrappers */
+.split-line-wrap {
+  overflow: hidden;
+  display: block;
+  padding-bottom: 0.08em;
+}
+
+.line {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Scroll Line Indicator */
+.scroll-line {
+  width: 52px;
+  height: 1px;
+  background: var(--border-medium);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--text-chalk);
+  transform: translateX(-100%);
+  animation: line-slide 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Live Green Dot */
+.live-indicator {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 10px #4ade80;
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Kinetic Title Characters */
+.kinetic-char {
+  display: inline-block;
+  will-change: transform;
+  cursor: default;
+}
+
+/* kinetic-char hover is driven by GSAP (see kineticTypo.js) for overwrite:auto smoothness */
+
+/* Manifesto Word Scrub */
+.scrub-word {
+  display: inline-block;
+  color: rgba(245, 242, 235, 0.12);
+  margin-right: 0.2em;
+  transition:
+    color 0.4s var(--ease-cinematic),
+    text-shadow 0.4s ease;
+}
+
+.scrub-word.accent-trigger {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  /* Optical leveling: Cormorant renders slightly larger — nudge back to line rhythm */
+  font-size: 1.02em;
+  vertical-align: -0.03em;
+}
+
+/* 3D Typographic Discipline Cards with Cursor Spotlight */
+.typo-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  will-change: transform, clip-path, opacity, box-shadow, border-color;
+  transition:
+    border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.5s ease;
+  cursor: pointer;
+}
+
+.typo-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 4.5rem 3.5rem;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Luminous cursor spotlight layer */
+.typo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(196, 158, 90, 0.08) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.typo-card:hover::before {
+  opacity: 1;
+}
+
+.typo-card:hover {
+  border-color: var(--border-gold);
+  background-color: var(--bg-card-hover);
+  box-shadow:
+    0 0 0 1px var(--border-gold),
+    0 35px 80px rgba(0, 0, 0, 0.75),
+    0 0 100px rgba(196, 158, 90, 0.05) inset;
+}
+
+/* Giant background glyph with opposing depth */
+.typo-card-bg-glyph {
+  position: absolute;
+  right: -3%;
+  bottom: -18%;
+  font-family: var(--font-editorial);
+  font-size: clamp(13rem, 28vw, 24rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(245, 242, 235, 0.018);
+  line-height: 0.7;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, color;
+  transition: color 0.6s ease;
+}
+
+.typo-card:hover .typo-card-bg-glyph {
+  color: rgba(196, 158, 90, 0.06);
+}
+
+/* Card typography expansion */
+.typo-card-headline {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-monument);
+  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  margin: 1.75rem 0 1.25rem 0;
+  color: var(--text-chalk);
+  transition: letter-spacing 0.6s var(--ease-museum), color 0.4s ease;
+}
+
+.typo-card:hover .typo-card-headline {
+  letter-spacing: 0.11em;
+  color: var(--text-white);
+}
+
+.typo-card-corner {
+  position: absolute;
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  z-index: 2;
+  transition: color 0.4s ease;
+}
+
+.typo-card:hover .typo-card-corner {
+  color: var(--text-muted);
+}
+
+.corner-tl { top: 1.5rem; left: 1.75rem; }
+.corner-tr { top: 1.5rem; right: 1.75rem; }
+.corner-bl { bottom: 1.5rem; left: 1.75rem; }
+.corner-br { bottom: 1.5rem; right: 1.75rem; }
+
+.typo-card-tags {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Dual-Direction Kinetic Wheel Turntable (Interactive Draggable) */
+.marquee-wrapper {
+  overflow: hidden;
+  padding: 4.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-void);
+  border-bottom: 1px solid var(--border-void);
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+  position: relative;
+  transition: background-color 0.4s ease;
+}
+
+.marquee-wrapper:hover {
+  background-color: var(--bg-card);
+}
+
+.marquee-wrapper.is-grabbing {
+  cursor: grabbing !important;
+}
+
+.marquee-wrapper.is-grabbing * {
+  cursor: grabbing !important;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+.marquee-segment {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+  pointer-events: none;
+}
+
+.marquee-display-filled {
+  font-family: var(--font-monument);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-chalk);
+  pointer-events: none;
+}
+
+.marquee-display-outline {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 242, 235, 0.35);
+  transition: all 0.5s var(--ease-museum);
+  pointer-events: none;
+}
+
+.marquee-wrapper:hover .marquee-display-outline {
+  color: var(--gold);
+  -webkit-text-stroke: 1px var(--gold);
+}
+
+.marquee-badge {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border-gold);
+  border-radius: 9999px;
+  color: var(--gold);
+  pointer-events: none;
+}
+
+/* ── Mobile Layout Polish for Cards & Marquee ── */
+@media (max-width: 768px) {
+  .typo-card {
+    padding: 0;
+  }
+  .typo-card-inner {
+    padding: 3rem 1.35rem 2.25rem 1.35rem;
+  }
+  .typo-card-corner {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+  .corner-tl { top: 1.25rem; left: 1.25rem; }
+  .corner-tr { top: 1.25rem; right: 1.25rem; }
+  .corner-bl { bottom: 1.25rem; left: 1.25rem; }
+  .corner-br { bottom: 1.25rem; right: 1.25rem; }
+  .typo-card-headline {
+    font-size: clamp(1.75rem, 6.5vw, 2.6rem);
+    margin: 1.25rem 0 0.85rem 0;
+    line-height: 1.1;
+  }
+  .typo-card p {
+    font-size: 1rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .typo-card-tags {
+    gap: 0.6rem;
+    font-size: 0.62rem;
+  }
+  .typo-card-bg-glyph {
+    font-size: 9.5rem;
+    right: -8%;
+    bottom: -12%;
+  }
+
+  .marquee-wrapper {
+    padding: 2.75rem 0;
+    gap: 1.25rem;
+  }
+  .marquee-segment {
+    gap: 1.75rem;
+    padding-right: 1.75rem;
+  }
+  .marquee-display-filled {
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+  }
+  .marquee-display-outline {
+    font-size: clamp(2.2rem, 7.5vw, 3.5rem);
+  }
+  .marquee-badge {
+    font-size: 0.58rem;
+    padding: 0.3rem 0.65rem;
+    letter-spacing: 0.1em;
+  }
+}

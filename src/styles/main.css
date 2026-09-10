@@ -1,0 +1,1080 @@
+@import './base.css';
+@import './cursor.css';
+@import './animations.css';
+@import './intro.css';
+
+/* ═══════════════════════════════════════════
+   NAV HEADER
+═══════════════════════════════════════════ */
+.nav-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+.nav-header > * { pointer-events: auto; }
+
+@media (min-width: 768px)  { .nav-header { padding: 2.25rem 4rem; } }
+@media (min-width: 1280px) { .nav-header { padding: 2.5rem 6.5rem; } }
+
+.brand-logo {
+  font-family: var(--font-monument);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-transform: uppercase;
+  transition: opacity 0.4s ease;
+}
+.brand-logo:hover { opacity: 0.75; }
+
+.nav-meta {
+  display: none;
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.5);
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) { .nav-meta { display: flex; } }
+
+.nav-cta {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition:
+    background-color 0.35s var(--ease-museum),
+    color            0.35s var(--ease-museum),
+    border-color     0.35s var(--ease-museum),
+    transform        0.4s  var(--ease-museum);
+}
+.nav-cta:hover {
+  background: #fff;
+  color: var(--bg-void);
+  border-color: #fff;
+  transform: scale(1.04);
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════════ */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 9rem;
+  padding-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-void);
+}
+
+/* Watermark ghost — massive background typography */
+.hero-bg-ghost {
+  position: absolute;
+  top: 10%;
+  left: -2%;
+  font-family: var(--font-monument);
+  font-size: clamp(10rem, 26vw, 28rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 235, 0.016);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  line-height: 0.82;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.hero-meta-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.hero-title-wrap {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+/* Two atmospheric ghost text layers behind main title */
+.hero-ghost-layer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: left center;
+  font-family: var(--font-monument);
+  font-size: clamp(4.2rem, 17vw, 16rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  will-change: transform, opacity;
+}
+.hero-ghost-1 {
+  color: rgba(245, 242, 235, 0.022);
+  transform: translateY(-50%) scale(1.08);
+}
+.hero-ghost-2 {
+  color: rgba(196, 158, 90, 0.018);
+  transform: translateY(-50%) scale(1.14);
+}
+
+.char-mask {
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 0.95;
+  vertical-align: bottom;
+  position: relative;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-monument);
+  font-size: clamp(4rem, 16vw, 15rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: var(--text-chalk);
+  /* Museum-grade characters: each char individually animated */
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* ── Hero Content Grid (Intro copy on left, Editorial portrait on right) ── */
+.hero-content-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 2.5rem;
+  align-items: flex-start;
+}
+@media (min-width: 900px) {
+  .hero-content-grid {
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: clamp(3rem, 5vw, 5.5rem);
+    align-items: flex-start;
+  }
+}
+
+.hero-intro-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 660px;
+}
+
+/* Hero Subtitle — Cormorant italic counterpoint with line overflow masks */
+.hero-subtitle {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.5vw, 2.45rem);
+  font-weight: 300;
+  letter-spacing: 0.015em;
+  color: var(--text-chalk);
+  line-height: 1.28;
+}
+
+.intro-line-mask {
+  display: block;
+  overflow: hidden;
+  line-height: 1.32;
+  padding-bottom: 0.08em;
+}
+
+.intro-line {
+  display: block;
+  will-change: transform;
+}
+
+/* Personal Body Text */
+.hero-desc {
+  font-family: var(--font-reading);
+  font-size: clamp(0.92rem, 1.05vw, 1.04rem);
+  line-height: 1.85;
+  max-width: 500px;
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* ── Editorial Portrait Card ── */
+.hero-portrait-col {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-portrait-card {
+  position: relative;
+  width: 100%;
+  max-width: clamp(220px, 22vw, 300px);
+  margin-left: auto;
+  margin-right: clamp(2.5rem, 5.5vw, 6.5rem);
+  margin-top: clamp(-4.5rem, -6.5vw, -2.2rem);
+  padding: 0.75rem;
+  background: rgba(14, 14, 15, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 242, 235, 0.1);
+  border-radius: 4px;
+  box-shadow:
+    0 24px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition:
+    border-color 0.45s var(--ease-museum),
+    box-shadow 0.45s var(--ease-museum);
+  will-change: transform;
+}
+
+.hero-portrait-card:active,
+.hero-portrait-card.is-dragging {
+  cursor: grabbing !important;
+}
+
+.hero-portrait-card.is-dragging {
+  border-color: rgba(196, 158, 90, 0.45);
+  box-shadow:
+    0 35px 85px -10px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(196, 158, 90, 0.1);
+  z-index: 50;
+}
+
+.hero-portrait-card:hover:not(.is-dragging) {
+  border-color: rgba(196, 158, 90, 0.32);
+  box-shadow:
+    0 32px 75px -12px rgba(0, 0, 0, 0.9),
+    0 0 32px rgba(196, 158, 90, 0.06);
+}
+
+.hero-portrait-card:hover:not(.is-dragging) .portrait-card-inner {
+  transform: translateY(-2px);
+}
+
+.portrait-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.portrait-meta-top,
+.portrait-meta-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.portrait-meta-top .portrait-tag {
+  color: var(--gold);
+}
+
+.portrait-img-mask {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #0b0b0d;
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  filter: grayscale(100%) contrast(1.06) brightness(0.96) sepia(0.06);
+  transition:
+    filter 0.6s var(--ease-museum),
+    transform 0.65s var(--ease-museum);
+  will-change: transform, filter;
+}
+
+.hero-portrait-card:hover .hero-portrait-img {
+  filter: grayscale(75%) contrast(1.08) brightness(1.0) sepia(0.06);
+  transform: scale(1.035) translateY(-2px);
+}
+
+.portrait-tint-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.05) 0%,
+    transparent 40%,
+    rgba(9, 9, 11, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+/* Editorial Corner Ticks */
+.portrait-corner {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-color: rgba(196, 158, 90, 0.35);
+  pointer-events: none;
+  transition: border-color 0.4s ease;
+}
+.hero-portrait-card:hover .portrait-corner {
+  border-color: rgba(196, 158, 90, 0.75);
+}
+.portrait-corner.top-left     { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
+.portrait-corner.top-right    { top: -1px; right: -1px; border-top: 1px solid; border-right: 1px solid; }
+.portrait-corner.bottom-left  { bottom: -1px; left: -1px; border-bottom: 1px solid; border-left: 1px solid; }
+.portrait-corner.bottom-right { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* ── Hero Bottom Bar ── */
+.hero-bottom-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-void);
+}
+
+.hero-disciplines-tag {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-code);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════
+   PHILOSOPHY / MANIFESTO SECTION (EDITORIAL COMPOSITION)
+═══════════════════════════════════════════ */
+.philosophy-section {
+  padding: clamp(6.5rem, 14vh, 14rem) 0 clamp(8rem, 18vh, 18rem) 0;
+  border-bottom: 1px solid var(--border-void);
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(ellipse 65% 45% at 50% 88%, rgba(196, 158, 90, 0.02) 0%, transparent 60%);
+}
+
+/* Subtle architectural vertical axis */
+.manifesto-axis {
+  position: absolute;
+  top: 5%;
+  bottom: 5%;
+  left: clamp(1.25rem, 6.5vw, 6.5rem);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(245, 242, 235, 0.04) 15%,
+    rgba(196, 158, 90, 0.08) 50%,
+    rgba(245, 242, 235, 0.04) 85%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Master Editorial Composition Container */
+.manifesto-composition {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8rem, 18vh, 22rem); /* Substantial negative breathing space between scenes */
+  width: 100%;
+}
+
+/* Scene block */
+.manifesto-scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.8vh, 3rem);
+  width: 100%;
+}
+
+/* Base phrase container (phrase-based vertical spotlight) */
+.m-phrase {
+  position: relative;
+  display: inline-block;
+  opacity: 0.14; /* Future state: quiet presence */
+  transform: translate3d(0, 24px, 0);
+  will-change: transform, opacity;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+/* ── Typography Levels ── */
+/* Level 1: Monumental statements */
+.m-level-1 {
+  font-family: var(--font-monument);
+  font-weight: 700;
+  font-size: clamp(3.2rem, 7.8vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.035em;
+  color: var(--text-chalk);
+  text-transform: uppercase;
+}
+
+/* Level 2: Editorial support */
+.m-level-2 {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.85rem, 3.8vw, 4.2rem);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: var(--text-warm);
+}
+
+.m-level-2:not(.font-editorial) {
+  font-family: var(--font-monument);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Level 3: Quiet annotations / connectors */
+.m-level-3 {
+  font-family: var(--font-code);
+  font-size: clamp(0.66rem, 1.1vw, 0.82rem);
+  letter-spacing: 0.26em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.m-annotation {
+  display: inline-block;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border-void);
+}
+
+.m-italic-connector {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2.8rem);
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+/* Level Climax: SILENCE */
+.m-monumental-climax {
+  align-self: center;
+  text-align: center;
+  margin: clamp(2rem, 6vh, 6rem) 0 clamp(1rem, 3vh, 3rem) 0;
+}
+
+.climax-word {
+  font-family: var(--font-monument);
+  font-weight: 800;
+  font-size: clamp(5rem, 15vw, 15rem);
+  line-height: 0.86;
+  letter-spacing: 0.06em;
+  color: var(--text-chalk);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* Antique Gold Accents — Rare and precious */
+.m-gold {
+  color: var(--gold) !important;
+}
+
+.m-accent-large {
+  font-size: clamp(3.6rem, 8.5vw, 9.2rem);
+}
+
+/* ── Spatial Positioning (Desktop) ── */
+.text-left {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.text-right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.text-offset-center {
+  align-self: flex-start;
+  margin-left: clamp(4rem, 18vw, 22rem);
+  text-align: left;
+}
+
+.text-left-indent {
+  align-self: flex-start;
+  margin-left: clamp(2rem, 8vw, 10rem);
+  text-align: left;
+}
+
+.text-indent-1 {
+  align-self: flex-start;
+  margin-left: clamp(3rem, 14vw, 18rem);
+}
+
+.text-indent-2 {
+  align-self: flex-start;
+  margin-left: clamp(1.5rem, 6vw, 8rem);
+}
+
+.text-indent-3 {
+  align-self: flex-end;
+  margin-right: clamp(2rem, 10vw, 12rem);
+}
+
+.text-center-subtle {
+  align-self: center;
+  text-align: center;
+}
+
+.text-climax-resolution {
+  align-self: center;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ═══════════════════════════════════════════
+   MONUMENTS SECTION (Typographic Artifacts)
+═══════════════════════════════════════════ */
+.showcase-section {
+  padding: var(--sp-xl) 0 var(--sp-2xl) 0;
+  background-color: var(--bg-surface);  /* Subtle zone differentiation */
+}
+
+.showcase-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--gold) 0%,
+    rgba(196, 158, 90, 0.45) 35%,
+    var(--border-subtle) 75%,
+    transparent 100%
+  );
+  transform-origin: left center;
+  transform: scaleX(0);
+  margin-bottom: 2.25rem;
+  will-change: transform;
+}
+
+.showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--sp-lg);
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-void);
+}
+
+.typo-headline-line-mask {
+  display: block;
+  overflow: hidden;
+  line-height: 1.05;
+}
+
+.typo-headline-line {
+  display: block;
+  will-change: transform;
+}
+
+.monuments-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .monuments-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION TRANSITION DIVIDERS
+   Each section gets a subtle atmospheric
+   gradient that bleeds into the next
+═══════════════════════════════════════════ */
+.section-transition {
+  height: 2px;
+  background: linear-gradient(to right,
+    transparent,
+    var(--border-subtle) 20%,
+    var(--border-subtle) 80%,
+    transparent
+  );
+  margin: 0;
+  position: relative;
+}
+/* Flush modifier: removes bottom margin (used in showcase-header) */
+.section-label--flush { margin-bottom: 0; }
+
+/* ─── Extracted from inline styles ─────────────────── */
+
+/* Hero bottom bar: disciplines list in code font */
+.hero-disciplines-tag {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* Showcase header: archive count */
+.archive-count-label {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* Card discipline number indicator */
+.typo-card-discipline-num {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card editorial body paragraph */
+.typo-card-body {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin-bottom: 2rem;
+  line-height: 1.65;
+  position: relative;
+  z-index: 2;
+}
+
+/* Footer column headings */
+.footer-col-heading {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  color: var(--text-faint);
+  margin-bottom: 1.75rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.section-transition::before {
+  content: '';
+  position: absolute;
+  inset: -40px 0;
+  background: linear-gradient(to bottom,
+    transparent,
+    rgba(196, 158, 90, 0.02) 50%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   GATEWAY MARQUEE
+═══════════════════════════════════════════ */
+.gateway-section {
+  position: relative;
+  overflow: hidden;
+}
+.gateway-link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER / COLOPHON
+═══════════════════════════════════════════ */
+.footer-lux {
+  padding: var(--sp-2xl) 0 4rem 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+/* Gold top-rule on footer */
+.footer-lux::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 6.5rem; right: 6.5rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-gold), transparent);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+  margin-bottom: 7rem;
+}
+@media (min-width: 768px) {
+  .footer-top { grid-template-columns: 2.2fr 1fr 1fr; }
+}
+
+.footer-cta-title {
+  font-family: var(--font-monument);
+  font-size: clamp(2.2rem, 4.5vw, 5rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  color: var(--text-chalk);
+}
+
+.email-copy-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight: 300;
+  color: var(--gold);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-gold);
+  transition:
+    opacity    0.3s ease,
+    transform  0.4s var(--ease-museum),
+    letter-spacing 0.4s var(--ease-museum);
+}
+.email-copy-btn:hover {
+  opacity: 0.8;
+  transform: translateX(6px);
+  letter-spacing: 0.02em;
+}
+
+.footer-links-col h4 {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  color: var(--text-faint);
+  margin-bottom: 1.75rem;
+  text-transform: uppercase;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-link-item a {
+  font-family: var(--font-reading);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.35s ease, transform 0.4s var(--ease-museum);
+}
+.footer-link-item a:hover {
+  color: var(--text-chalk);
+  transform: translateX(6px);
+}
+
+.footer-bottom {
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-void);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-code);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE DESIGN SUITE (MOBILE / TABLET)
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Navigation */
+  .nav-header {
+    padding: 1.15rem 1.25rem;
+  }
+  .brand-logo {
+    font-size: 1.05rem;
+    letter-spacing: 0.16em;
+  }
+  .nav-cta {
+    padding: 0.45rem 1.05rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    padding-top: 5.75rem;
+    padding-bottom: 2.25rem;
+    justify-content: space-between;
+  }
+  .hero-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    margin-bottom: 1.75rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+  }
+  /* Coordinates are redundant next to DA NANG in the live clock on mobile */
+  .hero-meta-bar span:last-child {
+    display: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 1.25rem;
+    line-height: 1.45;
+  }
+  .hero-title {
+    font-size: clamp(3.8rem, 18vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+  }
+  .hero-ghost-layer {
+    font-size: clamp(3.9rem, 19vw, 5.8rem);
+    letter-spacing: 0.04em;
+  }
+  .hero-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .hero-subtitle {
+    font-size: clamp(1.15rem, 4.2vw, 1.35rem);
+    line-height: 1.38;
+  }
+  .hero-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+  .hero-portrait-col {
+    justify-content: flex-start;
+  }
+  .hero-portrait-card {
+    margin-top: 0;
+    max-width: clamp(210px, 62vw, 250px);
+    margin-left: 0;
+  }
+  .hero-bottom-bar {
+    padding-top: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .scroll-prompt {
+    justify-content: flex-start;
+  }
+  /* Hide text and line, keep a minimal animated arrow */
+  .scroll-prompt span[data-scramble],
+  .scroll-line {
+    display: none;
+  }
+  .scroll-prompt::after {
+    content: '↓';
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    animation: pulse-dot 2.4s ease-in-out infinite;
+    display: block;
+  }
+
+  /* Section 02 - Philosophy / Manifesto Editorial Composition */
+  .philosophy-section {
+    padding: 4.5rem 0 6rem 0;
+  }
+  .manifesto-axis {
+    display: none;
+  }
+  .manifesto-composition {
+    gap: clamp(4.5rem, 11vh, 7rem);
+  }
+  .manifesto-scene {
+    gap: 0.85rem;
+  }
+  .m-phrase {
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+  .m-level-1 {
+    font-size: clamp(2.2rem, 9.2vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: 0.03em;
+  }
+  .m-level-2 {
+    font-size: clamp(1.25rem, 4.8vw, 1.85rem);
+    line-height: 1.35;
+  }
+  .m-accent-large {
+    font-size: clamp(2.3rem, 10vw, 4rem);
+  }
+  .climax-word {
+    font-size: clamp(3.6rem, 15.5vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+  }
+  .m-italic-connector {
+    font-size: 1.15rem;
+  }
+  /* Mobile alignment: clean vertical rhythm without horizontal overflow */
+  .text-left,
+  .text-right,
+  .text-offset-center,
+  .text-left-indent,
+  .text-indent-1,
+  .text-indent-2,
+  .text-indent-3,
+  .text-climax-resolution {
+    align-self: flex-start !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .text-right {
+    padding-left: 1.25rem;
+  }
+  .text-offset-center {
+    padding-left: 1.25rem;
+  }
+  .text-indent-1,
+  .text-indent-2,
+  .text-indent-3 {
+    padding-left: 1rem;
+  }
+  .m-monumental-climax,
+  .text-center-subtle {
+    align-self: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Section 03 - Disciplines */
+  .showcase-section {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+  .showcase-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .monuments-grid {
+    gap: 1.75rem;
+  }
+
+  /* Section 04 - Footer */
+  .footer-lux {
+    padding: 4.5rem 0 3rem 0;
+  }
+  .footer-lux::before {
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+  .footer-top {
+    gap: 2.75rem;
+    margin-bottom: 3.5rem;
+  }
+  .footer-cta-title {
+    font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .email-copy-btn {
+    font-size: 1.15rem;
+    word-break: break-all;
+  }
+  .footer-bottom {
+    padding-top: 2rem;
+    gap: 0.85rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+}
