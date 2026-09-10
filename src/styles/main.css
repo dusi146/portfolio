@@ -944,40 +944,55 @@
     display: none;
   }
 
-  /* Title & Eyebrow: Title is #2 emotional anchor, eyebrow settles below */
+  /* Title & Eyebrow: Bold monumental title beautifully centered & balanced */
   .hero-title-wrap {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex: none;
     width: 100%;
     position: relative;
     overflow: visible;
+    text-align: center;
   }
 
   .hero-title {
     order: 1;
-    font-size: clamp(2.6rem, 13.5vw, 4.2rem);
-    line-height: 0.9;
-    letter-spacing: 0.015em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    font-size: clamp(3.2rem, 16.8vw, 5.2rem);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
     white-space: nowrap;
-    width: auto;
-    max-width: 100%;
+    text-align: center;
   }
 
   .hero-ghost-layer {
-    font-size: clamp(2.7rem, 14vw, 4.3rem);
-    line-height: 0.9;
-    letter-spacing: 0.015em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(3.3rem, 17.2vw, 5.4rem);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .hero-eyebrow {
     order: 2;
     margin-top: 1.25rem;
     margin-bottom: 0;
-    font-size: 0.62rem;
+    font-size: clamp(0.58rem, 2.4vw, 0.65rem);
     letter-spacing: 0.16em;
     line-height: 1.45;
     color: var(--gold);
+    text-align: center;
+    align-self: center;
   }
 
   /* Hero Content Stack: Portrait block followed by intro copy */

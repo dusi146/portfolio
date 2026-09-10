@@ -71,8 +71,8 @@ export function runHeroEntrance() {
 
   // Letter spacing settles subtly from wider spacing to normal (calibrated for mobile vs desktop)
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
-  const targetLetterSpacing = isMobile ? '0.015em' : '0.04em';
-  const startLetterSpacing = isMobile ? '0.035em' : '0.08em';
+  const targetLetterSpacing = isMobile ? '0.02em' : '0.04em';
+  const startLetterSpacing = isMobile ? '0.045em' : '0.08em';
 
   tl.fromTo('.hero-title',
     { letterSpacing: startLetterSpacing },
