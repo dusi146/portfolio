@@ -60,6 +60,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
 html {
@@ -71,6 +73,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
 body {
@@ -81,10 +84,23 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
   /* Subtle radial warmth from centre */
   background-image:
     radial-gradient(ellipse 120% 60% at 50% -5%, rgba(40, 36, 28, 0.5) 0%, transparent 70%),
     radial-gradient(ellipse 60% 40% at 85% 55%, rgba(196, 158, 90, 0.03) 0%, transparent 55%);
+}
+
+a, button, input, textarea, select, [tabindex], [role="button"], [data-cursor], [data-magnetic] {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  outline: none;
+}
+
+:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 img {
