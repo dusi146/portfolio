@@ -115,6 +115,10 @@
   color: var(--text-faint);
   text-transform: uppercase;
 }
+.hero-meta-bar > * {
+  display: inline-block;
+  will-change: transform, opacity;
+}
 
 .hero-title-wrap {
   position: relative;
@@ -133,6 +137,8 @@
   margin-bottom: 2rem;
   display: block;
   text-transform: uppercase;
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 /* Two atmospheric ghost text layers behind main title */
@@ -168,6 +174,8 @@
   line-height: 0.95;
   vertical-align: bottom;
   position: relative;
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 .hero-title {
@@ -231,7 +239,8 @@
 
 .intro-line {
   display: block;
-  will-change: transform;
+  will-change: transform, opacity;
+  transform-origin: left center;
 }
 
 /* Personal Body Text */
@@ -243,6 +252,8 @@
   color: var(--text-muted);
   font-weight: 300;
   letter-spacing: 0.01em;
+  will-change: transform, opacity;
+  transform-origin: left center;
 }
 
 /* ── Editorial Portrait Card ── */
@@ -251,6 +262,8 @@
   justify-content: flex-end;
   position: relative;
   z-index: 1;
+  will-change: transform, opacity;
+  transform-origin: right center;
 }
 
 .hero-portrait-card {
@@ -397,6 +410,8 @@
   letter-spacing: 0.2em;
   color: var(--text-faint);
   text-transform: uppercase;
+  will-change: transform, opacity;
+  transform-origin: left center;
 }
 
 .scroll-prompt {
@@ -408,6 +423,8 @@
   letter-spacing: 0.2em;
   color: var(--text-faint);
   text-transform: uppercase;
+  will-change: transform, opacity;
+  transform-origin: right center;
 }
 
 /* ═══════════════════════════════════════════

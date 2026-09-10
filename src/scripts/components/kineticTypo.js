@@ -420,6 +420,7 @@ export function initKineticTypography() {
   // ── 4. Kinetic Title Letter Hover (Refined, Subtle, No Flashy Glow) ──
   document.querySelectorAll('.kinetic-char').forEach((char) => {
     char.addEventListener('mouseenter', () => {
+      if (window.scrollY > 80) return;
       gsap.to(char, {
         y: -8,
         scale: 1.02,
