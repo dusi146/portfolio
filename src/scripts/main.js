@@ -2,6 +2,7 @@ import '../styles/main.css';
 import { initSmoothScroll } from './core/smoothScroll.js';
 import { initCustomCursor } from './core/cursor.js';
 import { initLiveClock } from './components/clock.js';
+import { initProtection } from './core/protection.js';
 import { initSplitText } from './components/splitText.js';
 import { initKineticTypography, triggerNavScramble } from './components/kineticTypo.js';
 import { initCurtainReveals } from './components/curtainReveal.js';
@@ -11,6 +12,7 @@ import { initWheelMarquee } from './components/wheelMarquee.js';
 
 async function start() {
   // 1. Core engines initialize immediately
+  initProtection();
   initSmoothScroll();
   initCustomCursor();
   initLiveClock();
