@@ -1,4 +1,5 @@
 import '../styles/main.css';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { initSmoothScroll } from './core/smoothScroll.js';
 import { initCustomCursor } from './core/cursor.js';
 import { initLiveClock } from './components/clock.js';
@@ -34,6 +35,16 @@ async function start() {
   initKineticTypography();
   initCurtainReveals();
   initWheelMarquee();
+
+  // 6. Synchronize ScrollTrigger accurately after fonts and assets stabilize
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+  }
+  window.addEventListener('load', () => {
+    ScrollTrigger.refresh();
+  });
 }
 
 if (document.readyState === 'loading') {

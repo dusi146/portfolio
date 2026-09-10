@@ -198,8 +198,8 @@
 }
 @media (min-width: 900px) {
   .hero-content-grid {
-    grid-template-columns: 1.35fr 0.85fr;
-    gap: clamp(3rem, 5vw, 5.5rem);
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: clamp(2.5rem, 4.5vw, 5rem);
     align-items: flex-start;
   }
 }
@@ -258,7 +258,7 @@
   width: 100%;
   max-width: clamp(220px, 22vw, 300px);
   margin-left: auto;
-  margin-right: clamp(2.5rem, 5.5vw, 6.5rem);
+  margin-right: clamp(3.5rem, 6.5vw, 8rem);
   margin-top: clamp(-4.5rem, -6.5vw, -2.2rem);
   padding: 0.75rem;
   background: rgba(14, 14, 15, 0.75);
@@ -414,7 +414,7 @@
    PHILOSOPHY / MANIFESTO SECTION (EDITORIAL COMPOSITION)
 ═══════════════════════════════════════════ */
 .philosophy-section {
-  padding: clamp(6.5rem, 14vh, 14rem) 0 clamp(8rem, 18vh, 18rem) 0;
+  padding: clamp(7rem, 15vh, 15rem) 0 clamp(11rem, 24vh, 24rem) 0;
   border-bottom: 1px solid var(--border-void);
   position: relative;
   overflow: hidden;
@@ -530,7 +530,7 @@
 .m-monumental-climax {
   align-self: center;
   text-align: center;
-  margin: clamp(2rem, 6vh, 6rem) 0 clamp(1rem, 3vh, 3rem) 0;
+  margin: clamp(4rem, 10vh, 10rem) 0 clamp(2.5rem, 6vh, 6rem) 0;
 }
 
 .climax-word {
@@ -594,12 +594,13 @@
 .text-center-subtle {
   align-self: center;
   text-align: center;
+  margin: clamp(1.5rem, 3.5vh, 3.5rem) 0;
 }
 
 .text-climax-resolution {
   align-self: center;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: clamp(1.5rem, 4vh, 4rem);
 }
 
 /* ═══════════════════════════════════════════

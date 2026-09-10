@@ -10,9 +10,9 @@ export function initSmoothScroll() {
   if (_lenis) return _lenis;
 
   _lenis = new Lenis({
-    duration: 1.2,
+    duration: 1.1,
     easing: (t) => {
-      // Tighter exponential ease-out — rapid deceleration without the dead "coast"
+      // Refined exponential ease-out — rapid deceleration without the dead "coast"
       // Math.min guard prevents floating-point overshoot past 1.0
       return Math.min(1, 1.001 - Math.pow(2, -10 * t));
     },

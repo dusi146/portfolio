@@ -39,29 +39,32 @@ export function initKineticTypography() {
 
     phrases.forEach((phrase) => {
       const isClimaxWord = phrase.querySelector('.climax-word');
+      const isResolution = phrase.classList.contains('text-climax-resolution');
+      const isConnector  = phrase.classList.contains('m-level-3');
       const isItalic     = phrase.querySelector('.font-editorial');
       const isRight      = phrase.classList.contains('text-right');
-      const isConnector  = phrase.classList.contains('m-level-3');
+      const textContent  = phrase.textContent.trim();
+      const isPacedMoment = isClimaxWord || isResolution || textContent.includes('MORE INTENT') || textContent.includes('LESS NOISE');
 
-      // Subtle horizontal drift for italic lines (-14px or +14px)
-      const xDrift = isItalic ? (isRight ? -14 : 14) : 0;
+      // Subtle horizontal drift for italic lines (-12px or +12px)
+      const xDrift = isItalic ? (isRight ? -12 : 12) : 0;
       const initialScale = isClimaxWord ? 0.96 : (isConnector ? 1 : 0.985);
 
       // Dedicated ScrollTrigger per phrase: approaching -> active spotlight -> passed ambient
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: phrase,
-          start: isClimaxWord ? 'top 86%' : 'top 88%',
-          end: isClimaxWord ? 'bottom 15%' : 'bottom 20%',
-          scrub: isClimaxWord ? 1.8 : 1.4,
+          start: isClimaxWord ? 'top 82%' : (isPacedMoment ? 'top 85%' : 'top 88%'),
+          end: isClimaxWord ? 'bottom 12%' : (isPacedMoment ? 'bottom 15%' : 'bottom 20%'),
+          scrub: isClimaxWord ? 2.0 : (isPacedMoment ? 1.6 : 1.3),
         },
       });
 
-      // 1. APPROACHING -> ACTIVE (Enters viewport, brightens to peak opacity 1.0 at center)
+      // 1. UPCOMING (0.18) -> APPROACHING -> ACTIVE (1.0 at center reading zone)
       tl.fromTo(phrase,
         {
-          opacity: 0.14,
-          y: 26,
+          opacity: 0.18,
+          y: isClimaxWord ? 32 : 24,
           x: xDrift,
           scale: initialScale,
           letterSpacing: isClimaxWord ? '0.08em' : '0.04em',
@@ -78,15 +81,18 @@ export function initKineticTypography() {
         }
       );
 
-      // 2. ACTIVE READING ZONE (Stays fully illuminated across the reading zone)
+      // 2. ACTIVE READING ZONE (Hold duration based on narrative weight)
+      // SILENCE and key axioms stay active longer for deliberate pacing
+      const holdDuration = isClimaxWord ? 0.65 : (isResolution ? 0.45 : (isPacedMoment ? 0.35 : 0.15));
       tl.to(phrase, {
-        duration: isClimaxWord ? 0.35 : 0.15,
+        duration: holdDuration,
         ease: 'none',
       });
 
-      // 3. PASSED (Gracefully dims to ambient reading level ~0.40 as user scrolls beyond)
+      // 3. PASSED (Gracefully dims to ambient reading level 0.38 - 0.52 as user scrolls beyond)
+      const passedOpacity = isClimaxWord ? 0.52 : (isPacedMoment ? 0.46 : 0.38);
       tl.to(phrase, {
-        opacity: isClimaxWord ? 0.55 : 0.40,
+        opacity: passedOpacity,
         y: -10,
         duration: 0.4,
         ease: 'power1.out',
@@ -435,14 +441,14 @@ export function initKineticTypography() {
   });
 
   // ── 5. Ambient Atmospheric Ghost Layers (DUVANSI) ──
-  // Ghost layer 1: drift slowly left to right (-24px -> 24px)
+  // Ghost layer 1: drift slowly left to right (-24px -> 24px, 20s)
   const ghost1 = document.querySelector('.hero-ghost-1');
   if (ghost1) {
     gsap.fromTo(ghost1,
       { x: -24 },
       {
         x: 24,
-        duration: 18,
+        duration: 20,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
@@ -450,15 +456,15 @@ export function initKineticTypography() {
     );
   }
 
-  // Ghost layer 2: drift slowly right to left (18px -> -18px, y: -6px -> 6px)
+  // Ghost layer 2: drift slowly right to left (18px -> -18px, y: -5px -> 5px, 18s)
   const ghost2 = document.querySelector('.hero-ghost-2');
   if (ghost2) {
     gsap.fromTo(ghost2,
-      { x: 18, y: -6 },
+      { x: 18, y: -5 },
       {
         x: -18,
-        y: 6,
-        duration: 16,
+        y: 5,
+        duration: 18,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
@@ -534,8 +540,8 @@ export function initKineticTypography() {
       const clampedX = Math.max(-130, Math.min(130, rawX));
       const clampedY = Math.max(-95, Math.min(95, rawY));
 
-      // Subtle dynamic tilt (-2.2deg to +2.2deg max)
-      const rot = (clampedX / 130) * 2.2;
+      // Subtle dynamic tilt (-1.4deg to +1.4deg max)
+      const rot = (clampedX / 130) * 1.4;
 
       gsap.set(portraitCard, {
         x: clampedX,
@@ -564,8 +570,8 @@ export function initKineticTypography() {
         y: 0,
         rotation: 0,
         scale: 1,
-        duration: 1.1,
-        ease: 'elastic.out(1, 0.75)',
+        duration: 0.95,
+        ease: 'elastic.out(1, 0.85)',
         force3D: true,
         onComplete: () => {
           isSpringing = false;
