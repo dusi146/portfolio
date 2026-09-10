@@ -10,6 +10,7 @@ import { initCurtainReveals } from './components/curtainReveal.js';
 import { initIntro } from './components/intro.js';
 import { runHeroEntrance } from './components/heroReveal.js';
 import { initWheelMarquee } from './components/wheelMarquee.js';
+import { initMobileScrollProgress } from './components/scrollProgress.js';
 
 async function start() {
   // 1. Core engines initialize immediately
@@ -17,6 +18,7 @@ async function start() {
   initSmoothScroll();
   initCustomCursor();
   initLiveClock();
+  initMobileScrollProgress();
 
   // 2. Play intro greeting (accelerating, ~2s total)
   await initIntro();
