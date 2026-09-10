@@ -46,8 +46,9 @@ export function initKineticTypography() {
       const textContent  = phrase.textContent.trim();
       const isPacedMoment = isClimaxWord || isResolution || textContent.includes('MORE INTENT') || textContent.includes('LESS NOISE');
 
-      // Subtle horizontal drift for italic lines (-12px or +12px)
-      const xDrift = isItalic ? (isRight ? -12 : 12) : 0;
+      // Subtle horizontal drift for italic lines (-12px or +12px on desktop, 0 on mobile to prevent overflow)
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      const xDrift = isMobile ? 0 : (isItalic ? (isRight ? -12 : 12) : 0);
       const initialScale = isClimaxWord ? 0.96 : (isConnector ? 1 : 0.985);
 
       // Dedicated ScrollTrigger per phrase: approaching -> active spotlight -> passed ambient
@@ -201,8 +202,8 @@ export function initKineticTypography() {
     } else {
       const mm = gsap.matchMedia();
 
-      // ── DESKTOP & TABLET (> 768px) ──
-      mm.add('(min-width: 769px)', () => {
+      // ── DESKTOP & TABLET (>= 768px) ──
+      mm.add('(min-width: 768px)', () => {
         // Initial curtain state
         gsap.set(cards, {
           clipPath: 'inset(100% 0 0 0)',
@@ -292,8 +293,8 @@ export function initKineticTypography() {
         }
       });
 
-      // ── MOBILE (<= 768px) ──
-      mm.add('(max-width: 768px)', () => {
+      // ── MOBILE (<= 767px) ──
+      mm.add('(max-width: 767px)', () => {
         // Mobile Section Header
         const mobileHeaderTL = gsap.timeline({
           scrollTrigger: {
@@ -441,13 +442,18 @@ export function initKineticTypography() {
   });
 
   // ── 5. Ambient Atmospheric Ghost Layers (DUVANSI) ──
-  // Ghost layer 1: drift slowly left to right (-24px -> 24px, 20s)
+  const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+  const ghost1Amp = isMobileViewport ? 8 : 24;
+  const ghost2AmpX = isMobileViewport ? 6 : 18;
+  const ghost2AmpY = isMobileViewport ? 2 : 5;
+
+  // Ghost layer 1: drift slowly left to right
   const ghost1 = document.querySelector('.hero-ghost-1');
   if (ghost1) {
     gsap.fromTo(ghost1,
-      { x: -24 },
+      { x: -ghost1Amp },
       {
-        x: 24,
+        x: ghost1Amp,
         duration: 20,
         repeat: -1,
         yoyo: true,
@@ -456,14 +462,14 @@ export function initKineticTypography() {
     );
   }
 
-  // Ghost layer 2: drift slowly right to left (18px -> -18px, y: -5px -> 5px, 18s)
+  // Ghost layer 2: drift slowly right to left
   const ghost2 = document.querySelector('.hero-ghost-2');
   if (ghost2) {
     gsap.fromTo(ghost2,
-      { x: 18, y: -5 },
+      { x: ghost2AmpX, y: -ghost2AmpY },
       {
-        x: -18,
-        y: 5,
+        x: -ghost2AmpX,
+        y: ghost2AmpY,
         duration: 18,
         repeat: -1,
         yoyo: true,
